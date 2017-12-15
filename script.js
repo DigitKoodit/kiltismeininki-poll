@@ -9,13 +9,13 @@
     const title = document.getElementById('title');
     const moodText = document.getElementById('current-mood');
 
-    moodText.innerHtml = goodMoodB.onclick = function() {sendMood(1)};
-
+    goodMoodB.onclick = function() {sendMood(1)};
     okMoodB.onclick = function() {sendMood(0)};
     badMoodB.onclick = function() {sendMood(-1)};
 
     const state = loadState();
-    let lastClicked = (state && state.lastClicked) || 0;
+    let lastClicked = state ? state.lastClicked : 0;
+    console.log(state.lastClicked);
 
     const API_URL = 'https://digit.niemisami.com/api/guild/mood';
     requestMood();
@@ -27,6 +27,7 @@
         }
 
         var millisSinceLastClick = +new Date() - lastClicked;
+
         if(millisSinceLastClick < 10000) {
             showMessage('Odotappa vielä ' + (10 - (millisSinceLastClick / 1000)) + ' sekuntia');
             return;
@@ -42,9 +43,9 @@
         })
         .then(parseJson)
             .then(function(response) {
-                lastClicked = new Date();
+                lastClicked = new Date().getTime();
                 saveState({
-                    lastClicked
+                    lastClicked: lastClicked
                 });
 
                 if(response.status === 404) {
@@ -95,10 +96,10 @@
         }
         try {
             const serializedState = localStorage.getItem('state');
-            console.log(serializedState);
             if(serializedState === null) {
                 return undefined;
             }
+            return JSON.parse(serializedState);
         } catch(err) {
             console.log(err);
             return undefined;
