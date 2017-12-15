@@ -14,10 +14,13 @@
     badMoodB.onclick = function() {sendMood(-1)};
 
     const state = loadState();
+    const HOURS = 5;
+    const COOL_DOWN_SECONDS = 100;
+
     let lastClicked = state ? state.lastClicked : 0;
     console.log(state.lastClicked);
 
-    const API_URL = 'https://digit.niemisami.com/api/guild/mood';
+    const API_URL = 'https://digit.niemisami.com/api/guild/mood/';
     requestMood();
 
     function sendMood(mood) {
@@ -28,8 +31,8 @@
 
         var millisSinceLastClick = +new Date() - lastClicked;
 
-        if(millisSinceLastClick < 10000) {
-            showMessage('Odotappa vielä ' + (10 - (millisSinceLastClick / 1000)) + ' sekuntia');
+        if(millisSinceLastClick < COOL_DOWN_SECONDS * 1000) {
+            showMessage('Odotappa vielä ' + (COOL_DOWN_SECONDS - (millisSinceLastClick / 1000)) + ' sekuntia');
             return;
         }
 
@@ -52,7 +55,7 @@
                     throw new Error(response.statusText);
                 }
                 showMessage('KIITTI!');
-                showMood(response.mood, response.hours);
+                requestMood();
             })
         .catch(function(reason) {
             showMessage('SHII! MEININKIÄ EI VOITU VÄLITTÄÄ :\'(');
@@ -60,15 +63,15 @@
     }
 
     function requestMood() {
-        fetch(API_URL)
+        fetch(API_URL + HOURS)
             .then(parseJson)
             .then(function(response) {
+                console.log(response);
                 showMood(response.mood, response.hours);
             });
     }
 
     function parseJson(response) {
-
         var contentType = response.headers.get("content-type");
         if(contentType && contentType.includes("application/json")) {
             return response.json();
