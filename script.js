@@ -18,7 +18,6 @@
     const COOL_DOWN_SECONDS = 100;
 
     let lastClicked = state ? state.lastClicked : 0;
-    console.log(state.lastClicked);
 
     const API_URL = 'https://digit.niemisami.com/api/guild/mood/';
     requestMood();
@@ -51,7 +50,7 @@
                     lastClicked: lastClicked
                 });
 
-                if(response.status === 404) {
+                if(!response.status === 200) {
                     throw new Error(response.statusText);
                 }
                 showMessage('KIITTI!');
@@ -66,7 +65,6 @@
         fetch(API_URL + HOURS)
             .then(parseJson)
             .then(function(response) {
-                console.log(response);
                 showMood(response.mood, response.hours);
             });
     }

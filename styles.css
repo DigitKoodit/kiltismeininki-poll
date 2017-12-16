@@ -19,9 +19,23 @@ h1{
     font-size: 3rem;
     margin: 2rem 0;
     text-align: center;
+    font-weight: 400;
+}
+
+p {
+    font-size: 2rem; 
 }
 .mood-balls {
+    margin-bottom: 3rem;
+}
 
+.title {
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+}
+
+.message {
+    font-size: 2rem; 
 }
 
 .mood-ball {
