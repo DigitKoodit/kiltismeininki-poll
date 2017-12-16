@@ -8,6 +8,7 @@
 
     const title = document.getElementById('title');
     const moodText = document.getElementById('current-mood');
+    const hoursText = document.getElementById('hours');
 
     goodMoodB.onclick = function() {sendMood(1)};
     okMoodB.onclick = function() {sendMood(0)};
@@ -84,8 +85,8 @@
     }
 
     function showMood(mood, hours) {
-        moodText.innerHtml = 'Meininki viimeisen ' + hours + ' tunnin aikana ' + mood;
-        moodText.textContent = 'Meininki viimeisen ' + hours + ' tunnin aikana ' + mood;
+        moodText.textContent = mood;
+        hoursText.textContent = hours;
         return;
     }
 
