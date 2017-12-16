@@ -15,8 +15,8 @@
     badMoodB.onclick = function() {sendMood(-1)};
 
     const state = loadState();
-    const HOURS = 5;
-    const COOL_DOWN_SECONDS = 100;
+    const HOURS = 2;
+    const COOL_DOWN_SECONDS = 60;
 
     let lastClicked = state ? state.lastClicked : 0;
 
