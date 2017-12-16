@@ -6,6 +6,7 @@ body {
     height: 100vh;
     width: 100vw;
     background-color: #f1f0f0;
+    text-align: center;
 }
 
 .flex {
@@ -14,6 +15,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
+    padding: 1rem;
+    box-sizing: border-box;
 }
 h1{
     font-size: 3rem;
@@ -54,6 +57,7 @@ p {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all .2s linear;
 }
+
 .mood-ball:hover {
     box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 4px 4px rgba(0,0,0,0.1);
 }
@@ -73,4 +77,8 @@ p {
 #goody-moody {
     background-color: #4caf50; 
 }
-
+@media only screen and (max-width:640px) {
+    html {
+        font-size: 10px
+    }
+}
