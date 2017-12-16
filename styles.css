@@ -87,8 +87,17 @@ a:hover {
     background-color: #4caf50; 
 }
 
+@media only screen and (min-width:640px) {
+    .break {
+        display: none;
+    }
+}
+
 @media only screen and (max-width:640px) {
     html {
         font-size: 10px
     }
 }
+
+
+
