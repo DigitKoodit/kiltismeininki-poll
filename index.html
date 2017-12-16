@@ -14,6 +14,14 @@
         <!--[if lt IE 9]>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
         <![endif]-->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92568008-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-92568008-5');
+        </script>
     </head>
 
     <body>
@@ -26,6 +34,7 @@
                 <button class="mood-ball" id="goody-moody">:D</button>
             </div>
             <p>Meininki viimeisen <span class="num" id="hours">0</span> tunnin aikana: <span class="num" id="current-mood">0</span></p>
+            <p>Tarkista pössis <a href="http://digit.fi/webcam.php" target="_blank">täältä</a></p>
         </div>
         <script src="script.js"></script>
     </body>

@@ -26,6 +26,15 @@ h1{
 
 p {
     font-size: 2rem; 
+    margin: 0.5rem;
+}
+
+a { 
+    text-decoration: none;
+    color: #4caf50; 
+}
+a:hover {
+    color: #388e3c;
 }
 .mood-balls {
     margin-bottom: 4rem;
@@ -77,6 +86,7 @@ p {
 #goody-moody {
     background-color: #4caf50; 
 }
+
 @media only screen and (max-width:640px) {
     html {
         font-size: 10px
